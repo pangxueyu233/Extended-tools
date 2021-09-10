@@ -20,9 +20,15 @@ ArrowFiles <- createArrowFiles(inputFiles = inputFiles, sampleNames = names(inpu
 ArrowFiles
 doubScores <- addDoubletScores(input = ArrowFiles, k = 10, knnMethod = "UMAP", LSIMethod = 1)
 All_data <- ArchRProject(ArrowFiles = ArrowFiles, outputDirectory = "All_data", copyArrows = TRUE)
+plotFragmentSizes(ArchRProj = All_data)
+plotTSSEnrichment(ArchRProj = All_data)
 All_data2 <- filterDoublets(All_data)
-
+#Filtering 1136 cells from ArchRProject!
+#        OFF : 679 of 8245 (8.2%)
+#        ON : 457 of 6764 (6.8%)
 ~~~
+
+![image-20210910234118424](scATAC.assets/image-20210910234118424.png)
 
 - After the standard pre-processing and duplicates cell removing in scATAC data followed by the `ArchR` pipeline,  let's begin to cluster the sub-population and reduce the dimension of these data. 
 
